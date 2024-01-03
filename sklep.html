@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts: PT Serif, Kurale, Kaushan Script -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kurale&family=PT+Serif:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a16198b6e5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>FolkShop.pl</title>
+</head>
+
+<body>
+
+    <!-- header -->
+
+    <header>
+        <div class="header-img">
+            <div class="header-bg"></div>
+        </div>
+
+        <div class="header-text">
+            <a href="index.html">
+                <h1>FolkShop.pl</h1>
+            </a>
+        </div>
+
+        <div class="logo-bg">
+            <a href="index.html">
+                <div class="logo logo-anim"></div>
+            </a>
+        </div>
+    </header>
+
+    <!-- nav -->
+
+    <!-- MOBILE -->
+    <div class="nav-mobile">
+        <div class="nav-mobile-items">
+            <a href="index.html" class="nav-mobile-anim">home</a>
+            <a href="sklep.html" class="nav-mobile-anim">sklep</a>
+            <a href="klienci.html" class="nav-mobile-anim">klienci</a>
+            <a href="kontakt.html" class="nav-mobile-anim">kontakt</a>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- DESKTOP -->
+
+    <nav class="nav">
+
+        <button class="burger-icon"><i class="fa-solid fa-bars"></i></button>
+
+        <div class="nav-items">
+            <ul>
+                <li class="nav-item"><a href="index.html">home</a></li>
+                <li class="nav-item active"><a href="sklep.html">sklep</a></li>
+                <li class="nav-item"><a href="klienci.html">klienci</a></li>
+                <li class="nav-item"><a href="kontakt.html">kontakt</a></li>
+            </ul>
+        </div>
+
+        <div class="paybox header-anim">
+
+            <i class="fa-solid fa-basket-shopping" id="basket-icon">
+                <div class="cart-amount-bg">
+                    <div class="cart-amount">0</div>
+                </div>
+            </i>
+
+            <i class="fa-brands fa-gratipay">
+                <div class="like-amount-bg">
+                    <div class="like-amount">0</div>
+                </div>
+            </i>
+
+            <div class="basket-bg" id="basket-container">
+
+                <div class="bill">Suma: <span id="totalAmount">0</span> zł</div>
+
+                <button class="purchaseButton" id="purchaseButton">
+                    <p>zapłać!</p>
+                </button>
+
+                <i class="fa-solid fa-trash"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+
+    <main class="main">
+        <div class="purchaseMessage"></div>
+
+        <section class="section-title wrapper">
+            <div class="section-title-text">
+                <h2>Nasze hity!</h2>
+                <p>Zanurz się w dziedzictwie kultury ludowej dzięki nowej kolekcji <strong>FolkFusion!</strong> Nasz
+                    sklep to nie tylko miejsce zakupów, to podróż przez różnorodność folkloru, którą pragniemy
+                    przekazać poprzez nasze wyjątkowe produkty. Oferujemy nie tylko wysoką jakość ubrań, akcesoriów
+                    i instrumentów, ale także opowiadamy historie kryjące się za każdym wzorem i haftem.
+                    Przekraczając próg naszego sklepu, wchodzisz do świata, w którym tradycja spotyka nowoczesność,
+                    a każdy zakup staje się opowieścią.
+                </p>
+            </div>
+        </section>
+
+        <setion class="product-box">
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img">
+                    <img src="./img/shop/koszulka_damska_czarna_pracowita_kobita1.jpg" alt="">
+                </div>
+                <div class="product-text">
+                    <h3>koszulka damska czarna</h3>
+                    <p class="product-price">76 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(76)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/koszulka-folk-meska-czarna-wies-tanczy-i-spiewa-7019.png"
+                        alt=""></div>
+                <div class="product-text">
+                    <h3>koszulka męska czarna</h3>
+                    <p class="product-price">80 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(80)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/majtki_damskie_lowickie_czarne1.jpg" alt=""></div>
+                <div class="product-text">
+                    <h3>gacie damskie - łowickie</h3>
+                    <p class="product-price">35 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(35)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/bokserki_meskie_koguty_lowickie1.jpg" alt=""></div>
+                <div class="product-text">
+                    <h3>gacie męskie - łowickie</h3>
+                    <p class="product-price">40 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(40)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/skarpety_krotkie_biale_cale_w_kwiaty121.jpg" alt="">
+                </div>
+                <div class="product-text">
+                    <h3>skarpetki krótkie</h3>
+                    <p class="product-price">25 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(25)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/trampkii_krotkie_koguuty1211.jpg" alt=""></div>
+                <div class="product-text">
+                    <h3>trampki krótkie</h3>
+                    <p class="product-price">230 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(230)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/kalendarz2024_lowicki_bialy121.png" alt=""></div>
+                <div class="product-text">
+                    <h3>kalendarz 2024 - łowicki</h3>
+                    <p class="product-price">20 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(20)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop//czapka_zimowa_lowicka_czarna1-1.jpg" alt=""></div>
+                <div class="product-text">
+                    <h3>czapka zimowa - łowicka</h3>
+                    <p class="product-price">59 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(59)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/okulary_przecwsloneczne_czarne1.jpg" alt=""></div>
+                <div class="product-text">
+                    <h3>okulary przeciwsłoneczne</h3>
+                    <p class="product-price">37 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(37)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img
+                        src="./img/shop/bawelniana-torba-folk-kogut-lowicki-srednie-ucho-9658-1.jpg" alt=""></div>
+                <div class="product-text">
+                    <h3>torba bawełniana</h3>
+                    <p class="product-price">15 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(15)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/konfitura_lowickaa_czarna_porzeczkaa23.png" alt="">
+                </div>
+                <div class="product-text">
+                    <h3>konfitura - porzeczka</h3>
+                    <p class="product-price">29 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(29)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img
+                        src="./img/shop/krowki-z-polski-200g-w-ozdobnej-puszce-folk-lowicie-czarne-0740.png" alt="">
+                </div>
+                <div class="product-text">
+                    <h3>krówki w puszce</h3>
+                    <p class="product-price">39 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(39)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/Aria AGPN-003-zestaw.png" alt=""></div>
+                <div class="product-text">
+                    <h3>Aria AGPN-003-zestaw</h3>
+                    <p class="product-price">1250 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(1250)"> <i class="fa-solid fa-cart-shopping"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/Dadi Flet Sopranowy Plastik.png" alt=""></div>
+                <div class="product-text">
+                    <h3>Dadi Flet Sopranowy</h3>
+                    <p class="product-price">9 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(9)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/Fender FA-125 Dreadnought NAT.png" alt=""></div>
+                <div class="product-text">
+                    <h3>Fender FA-125 Dreadnought</h3>
+                    <p class="product-price">2250 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(2250)"> <i class="fa-solid fa-cart-shopping"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/Kurzweil KP110 WH.png" alt=""></div>
+                <div class="product-text">
+                    <h3>Kurzweil KP110</h3>
+                    <p class="product-price">1520 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(1520)"> <i class="fa-solid fa-cart-shopping"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/Meinl Tamburyn FD12TAM.png" alt=""></div>
+                <div class="product-text">
+                    <h3>Meinl Tamburyn FD12TAM</h3>
+                    <p class="product-price">550 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(550)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+            <div class="product-thumb">
+                <div class="add-to-cart-info"></div>
+                <div class="favoriteMessage" style="display: none;"></div>
+                <div class="product-img"><img src="./img/shop/gumka_do_wlosow_schrunchie_lowicka_czarna1.jpg" alt="">
+                </div>
+                <div class="product-text">
+                    <h3>Gumka do Włosów Łowicka</h3>
+                    <p class="product-price">25 zł</p>
+                    <p class="product-favorite"><i class="fa-regular fa-heart"></i></p>
+                    <p class="product-cart-icon" onclick="addToCart(25)"> <i class="fa-solid fa-cart-shopping"></i></p>
+                </div>
+            </div>
+        </setion>
+        <div class="table-user-header">Pełen Katalog produktów</div>
+        <div class="table-user-header-mobile"><a href="#">Pełen Katalog produktów</a></div>
+
+
+        <div class="table-users wrapper">
+
+            <div class="table-user">
+                <table cellspacing="0">
+                    <tr>
+                        <th>ikona</th>
+                        <th>Kategorie</th>
+                        <th>Ceny</th>
+                        <th>Dostępność</th>
+                        <th>---</th>
+                    </tr>
+
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/t-shirt.png" alt="ikona koszulki T-shirt" />
+                        </td>
+                        <td>Koszulki</td>
+                        <td>Ceny od 30 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/hoodie.png" alt="ikona bluzy" />
+                        </td>
+                        <td>Bluzy</td>
+                        <td>Ceny od 80 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/trousers.png" alt="ikona spodni" />
+                        </td>
+                        <td>Spodnie</td>
+                        <td>Ceny od 65 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/shirt.png" alt="" />
+                        </td>
+                        <td>Koszule</td>
+                        <td>Ceny od 60 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/shoes.png" alt="" />
+                        </td>
+                        <td>Buty</td>
+                        <td>Ceny od 50 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/accesories.png" alt="" />
+                        </td>
+                        <td>Akcesoria</td>
+                        <td>Ceny od 9 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/guitar.png" alt="" />
+                        </td>
+                        <td>Gitary</td>
+                        <td>Ceny od 800 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td class="playButton" data-audio-src="./audio/guitar.mp3"><i class="fas fa-circle-play"></i>
+                        </td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/drum.png" alt="" />
+                        </td>
+                        <td>Perkusje</td>
+                        <td>Ceny od 950 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td class="playButton" data-audio-src="./audio/drum.mp3"><i class="fas fa-circle-play"></i>
+                        </td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/piano.png" alt="" />
+                        </td>
+                        <td>Keyboardy</td>
+                        <td>Ceny od 1200 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td class="playButton" data-audio-src="./audio/piano.mp3"><i class="fas fa-circle-play"></i>
+                        </td>
+                    </tr>
+                    <tr class="unavailable">
+                        <td class="shop-src"><img src="./img/shop/Icons/accordion_230073.png" alt="" />
+                        </td>
+                        <td>Akordeony</td>
+                        <td>Ceny od 600 zł</td>
+                        <td><i class="fa-solid fa-xmark"></i></td>
+                        <td class="playButton" data-audio-src="./audio/accordion.mp3"><i class="fas fa-circle-play"></i>
+                        </td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/tambourine_5596675.png" alt="" />
+                        </td>
+                        <td>Tamburyny</td>
+                        <td>Ceny od 70 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td class="playButton" data-audio-src="./audio/tambourine.mp3"><i
+                                class="fas fa-circle-play"></i>
+                        </td>
+                    </tr>
+                    <tr class="product-page">
+                        <td class="shop-src"><img src="./img/shop/Icons/flute.png" alt="" />
+                        </td>
+                        <td>Flety</td>
+                        <td>Ceny od 10 zł</td>
+                        <td><i class="fa-solid fa-check"></i></td>
+                        <td class="playButton" data-audio-src="./audio/flute.mp3"><i class="fas fa-circle-play"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- footer -->
+
+    <div class="white-block">
+        <div class="red-block-left"></div>
+    </div>
+
+    <footer>
+        <div class="footer-text">
+            <p>Create by <a href="https://alisiecki.pl" target="_blank">Vulpine Coders</a> &copy; 2023 <a
+                    href="index.html">FolkShop</a></p>
+        </div>
+    </footer>
+
+    <script src="./js/cart.js"></script>
+    <script src="./js/musicPlayer.js"></script>
+    <script src="./js/burger.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts: PT Serif, Kurale, Kaushan Script -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kurale&family=PT+Serif:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a16198b6e5.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <title>FolkShop.pl</title>
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="header-img">
+            <div class="header-bg"></div>
+        </div>
+
+        <div class="header-text">
+            <a href="index.html">
+                <h1>FolkShop.pl</h1>
+            </a>
+        </div>
+
+        <div class="logo-bg">
+            <a href="index.html">
+                <div class="logo logo-anim"></div>
+            </a>
+        </div>
+    </header>
+
+    <!-- nav -->
+
+    <!-- MOBILE -->
+    <div class="nav-mobile">
+        <div class="nav-mobile-items">
+            <a href="index.html" class="nav-mobile-anim">home</a>
+            <a href="sklep.html" class="nav-mobile-anim">sklep</a>
+            <a href="klienci.html" class="nav-mobile-anim">klienci</a>
+            <a href="kontakt.html" class="nav-mobile-anim">kontakt</a>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- DESKTOP -->
+
+    <nav class="nav">
+
+        <button class="burger-icon"><i class="fa-solid fa-bars"></i></button>
+
+        <div class="nav-items">
+            <ul>
+                <li class="nav-item"><a href="index.html">home</a></li>
+                <li class="nav-item"><a href="sklep.html">sklep</a></li>
+                <li class="nav-item"><a href="klienci.html">klienci</a></li>
+                <li class="nav-item active"><a href="kontakt.html">kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- main -->
+    <main class="main">
+
+        <section class="contact wrapper">
+
+            <div class="contact-box">
+                <section class="contact-title">
+                    <h2>Skontaktuj się z nami!</h2>
+                </section>
+
+                <section class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20638.32142139388!2d18.783220460505653!3d49.7147517741708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47141d77de316d93%3A0x1ad95f98c54a4bcf!2sFolk%20shop!5e0!3m2!1spl!2spl!4v1702373469898!5m2!1spl!2spl"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </section>
+
+                <section class="contact-form">
+                    <div class="form-container">
+                        <form id="contactForm" action="#" method="post">
+                            <label for="name">Imie:</label>
+                            <input type="text" id="name" name="name" required autocomplete="name">
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+
+                            <label for="message">Wiadomość:</label>
+                            <textarea id="message" name="message" rows="4" required autocomplete="message"></textarea>
+
+                            <input type="submit" value="Submit">
+                        </form>
+
+                        <div id="messageContainer"></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <script src="./js/contact.js"></script>
+        <script src="./js/burger.js"></script>
+    </main>
+
+    <footer>
+        <div class="footer-text">
+            <p>Create by <a href="https://alisiecki.pl" target="_blank">Vulpine Coders</a> &copy; 2023 <a
+                    href="index.html">FolkShop</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
