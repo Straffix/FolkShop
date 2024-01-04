@@ -174,9 +174,10 @@ header {
 
 		a {
 			padding: 15px 30px;
-			font-size: 30px;
+			font-size: 25px;
 			text-decoration: none;
 			text-transform: uppercase;
+			text-align: center;
 			font-weight: bold;
 			color: #fff;
 			letter-spacing: 2px;
@@ -254,6 +255,10 @@ header {
 	color: $primary-color;
 	background-color: $red-color;
 	border-radius: 0 0 5px 5px;
+}
+
+.active-mobile p {
+	color: $primary-color;
 }
 
 // =============== ..:: PayBox ::..  =============== \\
@@ -426,6 +431,10 @@ header {
 	position: relative;
 	width: 100%;
 	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
 	background-color: #b53c3c;
 	background-image: repeating-linear-gradient(
 			transparent,
@@ -487,13 +496,10 @@ header {
 }
 
 .carousel {
-	position: absolute;
+	position: relative;
 	width: 100%;
 	max-height: 600px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border: 5px solid black;
+	border: 3px solid rgba(0, 0, 0, 0.662);
 	box-shadow: 0 0 20px black;
 	overflow: hidden;
 	cursor: pointer;
@@ -527,7 +533,7 @@ header {
 	color: white;
 	background-color: rgba(0, 0, 0, 0.562);
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 15px;
 	transition: 0.6s ease;
 	cursor: pointer;
 }
@@ -557,7 +563,7 @@ header {
 }
 
 .carousel-icon-center {
-	font-size: 200px;
+	font-size: 80px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
