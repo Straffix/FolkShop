@@ -161,9 +161,10 @@ header {
 }
 .nav-mobile .nav-mobile-items a {
   padding: 15px 30px;
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: none;
   text-transform: uppercase;
+  text-align: center;
   font-weight: bold;
   color: #fff;
   letter-spacing: 2px;
@@ -234,6 +235,10 @@ header {
   color: #fcbf49;
   background-color: #b53c3c;
   border-radius: 0 0 5px 5px;
+}
+
+.active-mobile p {
+  color: #fcbf49;
 }
 
 .paybox {
@@ -393,18 +398,19 @@ header {
   position: relative;
   width: 100%;
   height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
   background-color: #b53c3c;
   background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0, 0, 0, 0.4) 50px, rgba(0, 0, 0, 0.4) 53px, transparent 53px, transparent 63px, rgba(0, 0, 0, 0.4) 63px, rgba(0, 0, 0, 0.4) 66px, transparent 66px, transparent 116px, rgba(0, 0, 0, 0.5) 116px, rgba(0, 0, 0, 0.5) 166px, rgba(255, 255, 255, 0.2) 166px, rgba(255, 255, 255, 0.2) 169px, rgba(0, 0, 0, 0.5) 169px, rgba(0, 0, 0, 0.5) 179px, rgba(255, 255, 255, 0.2) 179px, rgba(255, 255, 255, 0.2) 182px, rgba(0, 0, 0, 0.5) 182px, rgba(0, 0, 0, 0.5) 232px, transparent 232px), repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0, 0, 0, 0.4) 50px, rgba(0, 0, 0, 0.4) 53px, transparent 53px, transparent 63px, rgba(0, 0, 0, 0.4) 63px, rgba(0, 0, 0, 0.4) 66px, transparent 66px, transparent 116px, rgba(0, 0, 0, 0.5) 116px, rgba(0, 0, 0, 0.5) 166px, rgba(255, 255, 255, 0.2) 166px, rgba(255, 255, 255, 0.2) 169px, rgba(0, 0, 0, 0.5) 169px, rgba(0, 0, 0, 0.5) 179px, rgba(255, 255, 255, 0.2) 179px, rgba(255, 255, 255, 0.2) 182px, rgba(0, 0, 0, 0.5) 182px, rgba(0, 0, 0, 0.5) 232px, transparent 232px), repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0, 0, 0, 0.2) 2px, rgba(0, 0, 0, 0.2) 3px, transparent 3px, transparent 5px, rgba(0, 0, 0, 0.2) 5px);
 }
 
 .carousel {
-  position: absolute;
+  position: relative;
   width: 100%;
   max-height: 600px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 5px solid black;
+  border: 3px solid rgba(0, 0, 0, 0.662);
   box-shadow: 0 0 20px black;
   overflow: hidden;
   cursor: pointer;
@@ -437,7 +443,7 @@ header {
   color: white;
   background-color: rgba(0, 0, 0, 0.562);
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   transition: 0.6s ease;
   cursor: pointer;
 }
@@ -466,7 +472,7 @@ header {
 }
 
 .carousel-icon-center {
-  font-size: 200px;
+  font-size: 80px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -815,14 +821,15 @@ footer {
 .purchaseMessage {
   display: none;
   position: fixed;
+  width: 300px;
   left: 50%;
   top: 50%;
   transform: translateX(-50%);
-  padding: 50px;
-  font-size: 20px;
-  color: #fff;
+  padding: 20px;
+  font-size: 15px;
+  color: white;
   text-align: center;
-  background-color: #000;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #b53c3c 74%);
   border: 2px solid rgb(142, 116, 0);
   border-radius: 8px;
   z-index: 1000;
@@ -836,11 +843,11 @@ footer {
   }
   10% {
     transform: translateX(-50%) translateY(-50%);
-    opacity: 1;
+    opacity: 99%;
   }
   90% {
     transform: translateX(-50%) translateY(-50%);
-    opacity: 1;
+    opacity: 99%;
   }
   100% {
     transform: translateX(-50%) translateY(1000px);
@@ -1434,6 +1441,9 @@ input[type=submit]:hover {
   .client-box {
     padding-bottom: 100px;
   }
+  .purchaseMessage {
+    width: 400px;
+  }
   .contact-title h2 {
     font-size: 35px;
   }
@@ -1471,6 +1481,10 @@ input[type=submit]:hover {
   }
   .client-box {
     padding-bottom: 150px;
+  }
+  .purchaseMessage {
+    padding: 30px;
+    font-size: 19px;
   }
   .contact-title h2 {
     font-size: 34px;
@@ -1622,6 +1636,10 @@ input[type=submit]:hover {
     100% {
       z-index: 1;
     }
+  }
+  .purchaseMessage {
+    padding: 30px;
+    font-size: 19px;
   }
   .contact-title h2 {
     font-size: 40px;
