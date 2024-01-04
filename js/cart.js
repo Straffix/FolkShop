@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		totalAmount = parseInt(totalAmountCookieValue) || 0
 
 		updateCartText()
-		updateTotalAmount() // Dodaj tę linijkę
+		updateTotalAmount()
 	}
 
 	// Funkcja zwracająca datę ważności ciasteczka (ustawiona na 30 dni od teraz)
@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function handleTrashIconClick() {
 		clickCount = 0
-		totalAmount = 0 // Dodaj tę linijkę
+		totalAmount = 0
 		updateCartText()
-		updateTotalAmount() // Dodaj tę linijkę
+		updateTotalAmount()
 		saveCartToCookie()
 	}
 
@@ -106,15 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			showPurchaseMessage('Twój koszyk jest pusty')
 		} else {
 			showPurchaseMessage(
-				`Twój produkt/y zostały zakupione!<br><br>Ilość zakupionych produktów: ${clickCount}<br>Łączna kwota do zapłaty: ${formatCurrency(
+				`Twój produkt/y zostały zakupione!<br><br>Ilość zakupionych sztuk: <span style="color: #fcbf49; font-weight: bold;">${clickCount}</span><br>Łączna kwota do zapłaty: <span style="color: #cce20d; font-size: 20px; font-weight: bold;">${formatCurrency(
 					totalAmount
-				)}
-                    <br><br>Więcej szczegółów otrzymasz w wiadomości e-mail.`
+				)}</span>`
 			)
 			clickCount = 0
-			totalAmount = 0 // Dodaj tę linijkę
+			totalAmount = 0
 			updateCartText()
-			updateTotalAmount() // Dodaj tę linijkę
+			updateTotalAmount()
 			saveCartToCookie()
 		}
 	}

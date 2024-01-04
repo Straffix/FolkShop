@@ -821,14 +821,15 @@ footer {
 .purchaseMessage {
   display: none;
   position: fixed;
+  width: 300px;
   left: 50%;
   top: 50%;
   transform: translateX(-50%);
-  padding: 50px;
-  font-size: 20px;
-  color: #fff;
+  padding: 20px;
+  font-size: 15px;
+  color: white;
   text-align: center;
-  background-color: #000;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #b53c3c 74%);
   border: 2px solid rgb(142, 116, 0);
   border-radius: 8px;
   z-index: 1000;
@@ -842,11 +843,11 @@ footer {
   }
   10% {
     transform: translateX(-50%) translateY(-50%);
-    opacity: 1;
+    opacity: 99%;
   }
   90% {
     transform: translateX(-50%) translateY(-50%);
-    opacity: 1;
+    opacity: 99%;
   }
   100% {
     transform: translateX(-50%) translateY(1000px);
@@ -1440,6 +1441,9 @@ input[type=submit]:hover {
   .client-box {
     padding-bottom: 100px;
   }
+  .purchaseMessage {
+    width: 400px;
+  }
   .contact-title h2 {
     font-size: 35px;
   }
@@ -1477,6 +1481,10 @@ input[type=submit]:hover {
   }
   .client-box {
     padding-bottom: 150px;
+  }
+  .purchaseMessage {
+    padding: 30px;
+    font-size: 19px;
   }
   .contact-title h2 {
     font-size: 34px;
@@ -1628,6 +1636,10 @@ input[type=submit]:hover {
     100% {
       z-index: 1;
     }
+  }
+  .purchaseMessage {
+    padding: 30px;
+    font-size: 19px;
   }
   .contact-title h2 {
     font-size: 40px;
