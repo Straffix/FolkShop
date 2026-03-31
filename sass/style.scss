@@ -385,6 +385,68 @@ header {
 	}
 }
 
+html.fa-fallback {
+	i.fa-solid,
+	i.fa-regular,
+	i.fa-brands,
+	i.fas {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 1em;
+		min-height: 1em;
+		font-style: normal;
+		line-height: 1;
+
+		&::before {
+			display: block;
+			font-family: 'Segoe UI Symbol', 'Apple Symbols', 'Arial Unicode MS', sans-serif;
+		}
+	}
+
+	i.fa-bars::before {
+		content: '☰';
+	}
+
+	i.fa-basket-shopping::before,
+	i.fa-cart-shopping::before {
+		content: '🛒';
+	}
+
+	i.fa-gratipay::before,
+	i.fa-heart::before {
+		content: '♡';
+	}
+
+	i.product-favorite-heart-click::before {
+		content: '♥';
+	}
+
+	i.fa-trash::before {
+		content: '🗑';
+	}
+
+	i.fa-circle-play::before {
+		content: '▶';
+	}
+
+	i.fa-stop::before {
+		content: '■';
+	}
+
+	i.fa-check::before {
+		content: '✓';
+	}
+
+	i.fa-xmark::before {
+		content: '✕';
+	}
+
+	i.fa-rotate::before {
+		content: '↻';
+	}
+}
+
 // =============== ..:: Main ::..  =============== \\
 
 .main {

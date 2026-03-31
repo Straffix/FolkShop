@@ -358,6 +358,58 @@ header {
   color: #b53c3c;
 }
 
+html.fa-fallback i.fa-solid,
+html.fa-fallback i.fa-regular,
+html.fa-fallback i.fa-brands,
+html.fa-fallback i.fas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  min-height: 1em;
+  font-style: normal;
+  line-height: 1;
+}
+html.fa-fallback i.fa-solid::before,
+html.fa-fallback i.fa-regular::before,
+html.fa-fallback i.fa-brands::before,
+html.fa-fallback i.fas::before {
+  display: block;
+  font-family: "Segoe UI Symbol", "Apple Symbols", "Arial Unicode MS", sans-serif;
+}
+html.fa-fallback i.fa-bars::before {
+  content: "☰";
+}
+html.fa-fallback i.fa-basket-shopping::before,
+html.fa-fallback i.fa-cart-shopping::before {
+  content: "🛒";
+}
+html.fa-fallback i.fa-gratipay::before,
+html.fa-fallback i.fa-heart::before {
+  content: "♡";
+}
+html.fa-fallback i.product-favorite-heart-click::before {
+  content: "♥";
+}
+html.fa-fallback i.fa-trash::before {
+  content: "🗑";
+}
+html.fa-fallback i.fa-circle-play::before {
+  content: "▶";
+}
+html.fa-fallback i.fa-stop::before {
+  content: "■";
+}
+html.fa-fallback i.fa-check::before {
+  content: "✓";
+}
+html.fa-fallback i.fa-xmark::before {
+  content: "✕";
+}
+html.fa-fallback i.fa-rotate::before {
+  content: "↻";
+}
+
 .main {
   position: relative;
   width: 100%;
