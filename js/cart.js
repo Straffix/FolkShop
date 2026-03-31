@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const cartAmountElement = document.querySelector('.cart-amount')
+	const totalAmountElement = document.getElementById('totalAmount')
 	const cartButtons = document.querySelectorAll('.product-cart-icon')
 	const purchaseButton = document.getElementById('purchaseButton')
 	const purchaseMessage = document.querySelector('.purchaseMessage')
@@ -8,135 +9,58 @@ document.addEventListener('DOMContentLoaded', () => {
 	const trashIcon = document.querySelector('.fa-trash')
 	const basketIcon = document.getElementById('basket-icon')
 	const basketContainer = document.getElementById('basket-container')
+	const productThumbs = document.querySelectorAll('.product-thumb, .product-page')
 
-	let clickCount = 0
+	if (!cartAmountElement || !totalAmountElement || !purchaseMessage) {
+		return
+	}
+
+	const cartState = {
+		count: 0,
+		total: 0,
+	}
+
 	let likeCount = 0
 	let lastActivatedMessage = null
 	let isBasketIconHovered = false
 	let isBasketContainerHovered = false
 
-	// Funkcja obsługująca najechanie na ikonę koszyka
-	function handleBasketIconHover() {
-		isBasketIconHovered = true
-		basketContainer.style.display = 'grid'
-	}
-
-	// Funkcja obsługująca zjechanie z ikony koszyka
-	function handleBasketIconLeave() {
-		isBasketIconHovered = false
-		// Opóźnij ukrycie koszyka, aby dać czas na najechanie myszą na kontener koszyka
-		setTimeout(() => {
-			if (!isBasketContainerHovered) {
-				basketContainer.style.display = 'none'
-			}
-		}, 200) // Opóźnienie w milisekundach (tu 200 ms)
-	}
-
-	// Funkcja obsługująca najechanie na kontener koszyka
-	function handleBasketContainerHover() {
-		isBasketContainerHovered = true
-	}
-
-	// Funkcja obsługująca zjechanie z kontenera koszyka
-	function handleBasketContainerLeave() {
-		isBasketContainerHovered = false
-		// Ukryj koszyk tylko jeśli mysz nie znajduje się nad ikoną koszyka
-		if (!isBasketIconHovered) {
-			basketContainer.style.display = 'none'
-		}
-	}
-
-	// Dodaj nasłuchiwanie zdarzeń
-	basketIcon.addEventListener('mouseenter', handleBasketIconHover)
-	basketIcon.addEventListener('mouseleave', handleBasketIconLeave)
-	basketContainer.addEventListener('mouseenter', handleBasketContainerHover)
-	basketContainer.addEventListener('mouseleave', handleBasketContainerLeave)
-
-	// Funkcja zapisująca koszyk do ciasteczka
-	function saveCartToCookie() {
-		document.cookie = `cartAmount=${clickCount}; expires=${getCookieExpirationDate()}; path=/`
-		document.cookie = `totalAmount=${totalAmount}; expires=${getCookieExpirationDate()}; path=/`
-	}
-
-	// Funkcja wczytująca koszyk z ciasteczka
-	function loadCartFromCookie() {
-		const cartAmountCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)cartAmount\s*=\s*([^;]*).*$)|^.*$/, '$1')
-		const totalAmountCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)totalAmount\s*=\s*([^;]*).*$)|^.*$/, '$1')
-
-		clickCount = parseInt(cartAmountCookieValue) || 0
-		totalAmount = parseInt(totalAmountCookieValue) || 0
-
-		updateCartText()
-		updateTotalAmount() // Dodaj tę linijkę
-	}
-
-	// Funkcja zwracająca datę ważności ciasteczka (ustawiona na 30 dni od teraz)
 	function getCookieExpirationDate() {
 		const expirationDate = new Date()
 		expirationDate.setDate(expirationDate.getDate() + 30)
 		return expirationDate.toUTCString()
 	}
 
-	// Po załadowaniu strony wczytaj koszyk z ciasteczka
-	loadCartFromCookie()
-
-	// Nasłuchuj zmian w koszyku i zapisuj je do ciasteczka
-	document.addEventListener('click', () => {
-		saveCartToCookie()
-	})
-
-	function handleCartButtonClick() {
-		clickCount++
-		updateCartText()
-
-		const productInfo = this.closest('.product-thumb, .product-page').querySelector('.add-to-cart-info')
-		showProductInfo(productInfo, 'Dodano do koszyka!')
+	function getCookieValue(name) {
+		return document.cookie.replace(new RegExp(`(?:(?:^|.*;\\s*)${name}\\s*=\\s*([^;]*).*$)|^.*$`), '$1')
 	}
 
-	function handleTrashIconClick() {
-		clickCount = 0
-		totalAmount = 0 // Dodaj tę linijkę
-		updateCartText()
-		updateTotalAmount() // Dodaj tę linijkę
-		saveCartToCookie()
+	function saveCartState() {
+		document.cookie = `cartAmount=${cartState.count}; expires=${getCookieExpirationDate()}; path=/`
+		document.cookie = `totalAmount=${cartState.total}; expires=${getCookieExpirationDate()}; path=/`
 	}
 
-	function handlePurchaseButtonClick() {
-		if (clickCount === 0) {
-			showPurchaseMessage('Twój koszyk jest pusty')
-		} else {
-			showPurchaseMessage(
-				`Twój produkt/y zostały zakupione!<br><br>Ilość zakupionych produktów: ${clickCount}<br>Łączna kwota do zapłaty: ${formatCurrency(
-					totalAmount
-				)}
-                    <br><br>Więcej szczegółów otrzymasz w wiadomości e-mail.`
-			)
-			clickCount = 0
-			totalAmount = 0 // Dodaj tę linijkę
-			updateCartText()
-			updateTotalAmount() // Dodaj tę linijkę
-			saveCartToCookie()
-		}
+	function loadCartState() {
+		cartState.count = parseInt(getCookieValue('cartAmount'), 10) || 0
+		cartState.total = parseInt(getCookieValue('totalAmount'), 10) || 0
+		renderCartState()
+	}
+
+	function renderCartState() {
+		cartAmountElement.textContent = `${cartState.count}`
+		totalAmountElement.textContent = `${cartState.total}`
 	}
 
 	function formatCurrency(amount) {
 		return `${amount} zł`
 	}
 
-	function updateCartText() {
-		cartAmountElement.textContent = clickCount === 0 ? '0' : `${clickCount}`
-	}
-
-	function showPurchaseMessage(message) {
-		showInfoMessage(purchaseMessage, message)
-	}
-
-	function showProductInfo(element, message) {
-		showInfoMessage(element, message)
-	}
-
 	function showInfoMessage(element, message) {
-		if (lastActivatedMessage) {
+		if (!element) {
+			return
+		}
+
+		if (lastActivatedMessage && lastActivatedMessage !== element) {
 			lastActivatedMessage.style.display = 'none'
 		}
 
@@ -146,103 +70,223 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		setTimeout(() => {
 			element.style.display = 'none'
+			if (lastActivatedMessage === element) {
+				lastActivatedMessage = null
+			}
 		}, 4000)
 	}
 
-	function updateTotalAmount() {
-		document.getElementById('totalAmount').innerText = totalAmount
+	function showPurchaseMessage(message) {
+		showInfoMessage(purchaseMessage, message)
 	}
 
-	function handleFavoriteIconClick() {
-		const productThumb = this.closest('.product-thumb, .product-page')
-		const favoriteInfo = productThumb.querySelector('.favoriteMessage')
-		const heartIcon = this.querySelector('i.fa-heart')
+	function showProductMessage(productElement, selector, message) {
+		const infoBox = productElement ? productElement.querySelector(selector) : null
+		showInfoMessage(infoBox, message)
+	}
+
+	function getButtonPrice(button) {
+		const { price } = button.dataset
+		return parseInt(price, 10) || 0
+	}
+
+	function resetCart() {
+		cartState.count = 0
+		cartState.total = 0
+		renderCartState()
+		saveCartState()
+	}
+
+	function handleCartButtonClick(event) {
+		event.stopPropagation()
+
+		const product = event.currentTarget.closest('.product-thumb, .product-page')
+		const price = getButtonPrice(event.currentTarget)
+
+		cartState.count += 1
+		cartState.total += price
+
+		renderCartState()
+		saveCartState()
+		showProductMessage(product, '.add-to-cart-info', 'Dodano do koszyka!')
+	}
+
+	function handleTrashIconClick(event) {
+		event.stopPropagation()
+		resetCart()
+	}
+
+	function handlePurchaseButtonClick(event) {
+		event.stopPropagation()
+
+		if (cartState.count === 0) {
+			showPurchaseMessage('Twój koszyk jest pusty')
+			return
+		}
+
+		showPurchaseMessage(
+			`Twój produkt/y zostały zakupione!<br><br>Ilość zakupionych produktów: ${cartState.count}<br>Łączna kwota do zapłaty: ${formatCurrency(
+				cartState.total
+			)}<br><br>Więcej szczegółów otrzymasz w wiadomości e-mail.`
+		)
+
+		resetCart()
+	}
+
+	function updateLikeText() {
+		if (likeAmountElement) {
+			likeAmountElement.textContent = `${likeCount}`
+		}
+	}
+
+	function handleFavoriteIconClick(event) {
+		event.stopPropagation()
+
+		const product = event.currentTarget.closest('.product-thumb, .product-page')
+		const favoriteInfo = product ? product.querySelector('.favoriteMessage') : null
+		const heartIcon = event.currentTarget.querySelector('.fa-heart')
+
+		if (!heartIcon) {
+			return
+		}
+
 		const isRegular = heartIcon.classList.contains('fa-regular')
 
 		if (isRegular) {
-			// If the product is added to favorites
 			heartIcon.classList.remove('fa-regular')
 			heartIcon.classList.add('fa-solid', 'product-favorite-heart-click')
-			likeCount++
-			showProductInfo(favoriteInfo, 'Dodano do ulubionych!')
+			likeCount += 1
+			showInfoMessage(favoriteInfo, 'Dodano do ulubionych!')
 		} else {
-			// If the product is removed from favorites
 			heartIcon.classList.remove('fa-solid', 'product-favorite-heart-click')
 			heartIcon.classList.add('fa-regular')
-			likeCount--
-			showProductInfo(favoriteInfo, 'Usunięto z ulubionych!')
+			likeCount = Math.max(0, likeCount - 1)
+			showInfoMessage(favoriteInfo, 'Usunięto z ulubionych!')
 		}
 
 		updateLikeText()
 	}
 
-	function updateLikeText() {
-		likeAmountElement.textContent = likeCount === 0 ? '0' : `${likeCount}`
+	function shouldSkipProductRedirect(target) {
+		if (!(target instanceof Element)) {
+			return false
+		}
+
+		return Boolean(
+			target.closest(
+				'.fa-circle-play, .fa-stop, .playButton, .product-cart-icon, .product-favorite, .purchaseButton, .fa-trash, #basket-icon, #basket-container'
+			)
+		)
 	}
 
-	favoriteIcons.forEach(icon => {
-		icon.addEventListener('click', handleFavoriteIconClick)
-	})
+	function handleProductClick(event) {
+		if (shouldSkipProductRedirect(event.target)) {
+			return
+		}
 
-	const productThumbs = document.querySelectorAll('.product-thumb, .product-page')
+		purchaseMessage.style.display = 'block'
+		purchaseMessage.textContent = 'Przenoszenie do strony z produktem...'
 
-	productThumbs.forEach(productThumb => {
-		productThumb.addEventListener('click', event => {
-			const target = event.target
+		setTimeout(() => {
+			purchaseMessage.textContent = 'To tylko portfolio!'
+		}, 3000)
 
-			if (
-				target.classList.contains('fa-circle-play') ||
-				target.classList.contains('fa-stop') ||
-				target.classList.contains('product-cart-icon') ||
-				target.classList.contains('product-favorite') ||
-				target.closest('.fa-circle-play') ||
-				target.closest('.fa-stop') ||
-				target.closest('.product-cart-icon') ||
-				target.closest('.product-favorite')
-			) {
-				return
+		setTimeout(() => {
+			purchaseMessage.style.display = 'none'
+		}, 5000)
+	}
+
+	function handleBasketIconHover() {
+		if (!basketContainer) {
+			return
+		}
+
+		isBasketIconHovered = true
+		basketContainer.style.display = 'grid'
+	}
+
+	function handleBasketIconLeave() {
+		if (!basketContainer) {
+			return
+		}
+
+		isBasketIconHovered = false
+
+		setTimeout(() => {
+			if (!isBasketContainerHovered) {
+				basketContainer.style.display = 'none'
 			}
+		}, 200)
+	}
 
-			purchaseMessage.style.display = 'block'
-			purchaseMessage.textContent = 'Przenoszenie do strony z produktem...'
+	function handleBasketIconClick(event) {
+		if (!basketContainer) {
+			return
+		}
 
-			setTimeout(() => {
-				purchaseMessage.textContent = 'To tylko portfolio!'
-			}, 3000)
+		event.stopPropagation()
+		const isVisible = basketContainer.style.display === 'grid'
 
-			setTimeout(() => {
-				purchaseMessage.style.display = 'none'
-			}, 5000)
-		})
-	})
+		basketContainer.style.display = isVisible ? 'none' : 'grid'
+		isBasketIconHovered = !isVisible
+	}
+
+	function handleBasketContainerHover() {
+		isBasketContainerHovered = true
+	}
+
+	function handleBasketContainerLeave() {
+		if (!basketContainer) {
+			return
+		}
+
+		isBasketContainerHovered = false
+
+		if (!isBasketIconHovered) {
+			basketContainer.style.display = 'none'
+		}
+	}
+
+	loadCartState()
+	updateLikeText()
 
 	cartButtons.forEach(button => {
 		button.addEventListener('click', handleCartButtonClick)
 	})
 
-	trashIcon.addEventListener('click', handleTrashIconClick)
-	purchaseButton.addEventListener('click', handlePurchaseButtonClick)
-})
+	favoriteIcons.forEach(icon => {
+		icon.addEventListener('click', handleFavoriteIconClick)
+	})
 
-// Inicjalizacja sumy
-let totalAmount = 0
+	productThumbs.forEach(productThumb => {
+		productThumb.addEventListener('click', handleProductClick)
+	})
 
-// Funkcja dodająca do koszyka
-function addToCart(price) {
-	totalAmount += price
-	document.getElementById('totalAmount').innerText = totalAmount
-}
+	if (trashIcon) {
+		trashIcon.addEventListener('click', handleTrashIconClick)
+	}
 
-// Resetowanie totalAmount po kliknięciu na ikonę "fa-trash"
-document.querySelector('.fa-trash').addEventListener('click', function () {
-	totalAmount = 0
-	document.getElementById('totalAmount').innerText = totalAmount
-})
+	if (purchaseButton) {
+		purchaseButton.addEventListener('click', handlePurchaseButtonClick)
+	}
 
-// Resetowanie totalAmount po kliknięciu na przycisk "purchaseButton"
-document.getElementById('purchaseButton').addEventListener('click', function () {
-	setTimeout(() => {
-		totalAmount = 0
-		document.getElementById('totalAmount').innerText = totalAmount
-	}, 1000)
+	if (basketIcon && basketContainer) {
+		basketIcon.addEventListener('click', handleBasketIconClick)
+		basketIcon.addEventListener('mouseenter', handleBasketIconHover)
+		basketIcon.addEventListener('mouseleave', handleBasketIconLeave)
+		basketContainer.addEventListener('mouseenter', handleBasketContainerHover)
+		basketContainer.addEventListener('mouseleave', handleBasketContainerLeave)
+	}
+
+	document.addEventListener('click', event => {
+		if (!basketIcon || !basketContainer || !(event.target instanceof Element)) {
+			return
+		}
+
+		if (!event.target.closest('#basket-icon') && !event.target.closest('#basket-container')) {
+			basketContainer.style.display = 'none'
+			isBasketIconHovered = false
+			isBasketContainerHovered = false
+		}
+	})
 })
